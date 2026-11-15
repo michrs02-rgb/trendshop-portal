@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produto Oficial | TrendShop Curadoria</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  
+  <!-- Fontes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos Globais -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Barra Superior de Confiança -->
+  <div class="top-trust-bar">
+    <div class="container">
+      <div class="trust-badges">
+        <span class="trust-item"><span class="dot"></span> Curadoria Oficial <strong>TrendShop</strong></span>
+        <span class="trust-item"><span class="dot"></span> Link Oficial Shopee Verificado</span>
+        <span class="trust-item"><span class="dot"></span> Garantia de Satisfação ou Reembolso</span>
+      </div>
+      <div class="trust-extra">
+        <span>⭐ Avaliação Média dos Compradores: <strong>4.9 / 5.0</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Fixo -->
+  <header class="site-header">
+    <div class="container">
+      <!-- Logo -->
+      <a href="index.html" class="brand-link" title="Voltar para a vitrine">
+        <div class="logo-circle">
+          <img src="assets/img/logo.svg" alt="TrendShop Logo" width="34" height="34">
+        </div>
+        <div class="brand-info">
+          <div class="brand-title">Trend<span class="accent-cyan">Shop</span></div>
+          <span class="brand-slogan">Curadoria Inteligente das Melhores Ofertas</span>
+        </div>
+      </a>
+
+      <!-- Atalho de Retorno e Busca -->
+      <div class="header-actions">
+        <div class="search-wrapper">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" onclick="window.location.href='index.html'" class="search-input" placeholder="Buscar outras ofertas no catálogo..." style="cursor: pointer;">
+        </div>
+        <a href="index.html" class="btn-filter-fast" style="text-decoration: none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Ver Todas as Ofertas</span>
+        </a>
+      </div>
+
+      <div class="header-links">
+        <a href="admin.html" class="btn-admin-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          <span>Admin</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="product-page-main">
+    <div class="container">
+
+      <!-- Breadcrumbs de Navegação -->
+      <nav class="breadcrumb-nav" aria-label="Navegação Estrutural">
+        <a href="index.html">TrendShop</a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="index.html" id="breadDepto">Departamento</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current" id="breadTitle">Carregando Produto...</span>
+      </nav>
+
+      <!-- Grade Principal do Produto: Galeria 5 Fotos x Compra e Conversão -->
+      <div class="product-details-container">
+        
+        <!-- Coluna Esquerda: Galeria de 5 Imagens -->
+        <div class="gallery-column">
+          <!-- Visualizador Principal -->
+          <div class="main-image-viewer">
+            <img id="galleryMainImage" src="" alt="Foto Principal do Produto">
+            
+            <!-- Setas de Navegação -->
+            <button id="galleryPrev" class="gallery-nav-arrow gallery-arrow-prev" aria-label="Foto Anterior">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button id="galleryNext" class="gallery-nav-arrow gallery-arrow-next" aria-label="Próxima Foto">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <!-- Legenda Dinâmica do Ângulo -->
+            <div class="angle-badge-caption">
+              <span id="angleCaptionText" class="angle-caption-text">1/5 Foto Principal</span>
+              <span style="font-size: 0.7rem; color: #a496c7;">Clique ou passe o mouse abaixo</span>
+            </div>
+          </div>
+
+          <!-- Faixa de Miniaturas (5 fotos: XX-1 a XX-5) -->
+          <div id="thumbnailsStrip" class="thumbnails-strip">
+            <!-- 5 miniaturas renderizadas via JS -->
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Compra e Conversão -->
+        <div class="product-info-column">
+          <!-- Selo Curadoria -->
+          <div class="official-curation-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Curadoria Oficial TrendShop</span>
+          </div>
+
+          <!-- Título do Produto -->
+          <h1 id="productTitle" class="product-detail-title">Carregando...</h1>
+
+          <!-- Estatísticas de Avaliação e Vendas -->
+          <div class="product-stats-row">
+            <span class="stats-rating">
+              <span id="ratingScore">4.9</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#d97706"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </span>
+            <span class="stats-reviews">(Mais de 2.400 avaliações)</span>
+            <span>•</span>
+            <span id="salesCount" class="stats-sold">... vendidos</span>
+          </div>
+
+          <!-- Faixa de Oferta Relâmpago com Cronômetro -->
+          <div class="flash-deal-bar">
+            <div class="flash-deal-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>Oferta Relâmpago Shopee</span>
+            </div>
+            <div class="flash-deal-timer">
+              <span>Termina em:</span>
+              <span id="flashTimerDigits" class="flash-timer-digits">00:00:00</span>
+            </div>
+          </div>
+
+          <!-- Bloco de Preços -->
+          <div class="price-display-block">
+            <div class="price-original-line">
+              Preço original: <span id="oldPrice">R$ 0,00</span>
+            </div>
+            <div class="price-promotional-line">
+              <span id="promoPrice" class="price-value-highlight"><small>R$</small> 0,00</span>
+              <span id="discountBadge" class="price-discount-pill">-0% OFF</span>
+            </div>
+          </div>
+
+          <!-- Selos de Envio e Frete -->
+          <div class="shipping-perks-box">
+            <div class="shipping-perk-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <span><strong>Frete Grátis</strong> disponível aplicando cupom na Shopee</span>
+            </div>
+            <div class="shipping-perk-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span><strong>Envio Nacional</strong> com rastreamento oficial dos Correios</span>
+            </div>
+          </div>
+
+          <!-- Seletor de Quantidade -->
+          <div class="quantity-control-row">
+            <span class="qty-label">Quantidade:</span>
+            <div class="qty-selector">
+              <button id="qtyMinus" class="qty-btn" aria-label="Diminuir quantidade">−</button>
+              <span id="qtyValue" class="qty-number">1</span>
+              <button id="qtyPlus" class="qty-btn" aria-label="Aumentar quantidade">+</button>
+            </div>
+            <span style="font-size: 0.78rem; color: #059669; font-weight: 600;">Estoque Alto</span>
+          </div>
+
+          <!-- Botões Principais de Conversão -->
+          <div class="cta-actions-group">
+            <a id="btnShopeeBuy" href="#" target="_blank" rel="noopener noreferrer" class="btn-buy-shopee-now">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <span>Comprar Agora na Shopee</span>
+            </a>
+            <button id="btnFavToggle" class="btn-fav-toggle" title="Salvar nos Favoritos">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+          </div>
+
+          <!-- Bloco de Confiança da Loja -->
+          <div class="trust-banner-card">
+            <div class="trust-feature-col">
+              <div class="trust-feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="trust-feature-text">
+                <h4>Curadoria Verificada</h4>
+                <p>Taxa de aprovação 99%</p>
+              </div>
+            </div>
+
+            <div class="trust-feature-col">
+              <div class="trust-feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <div class="trust-feature-text">
+                <h4>Compra Segura</h4>
+                <p>Direto na Shopee Oficial</p>
+              </div>
+            </div>
+
+            <div class="trust-feature-col">
+              <div class="trust-feature-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              </div>
+              <div class="trust-feature-text">
+                <h4>Envio Imediato</h4>
+                <p>Postagem em 24h úteis</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Blocos Inferiores: Benefícios, Especificações Técnicas e Avaliações -->
+      <div class="content-sections-wrapper">
+
+        <!-- Descrição Persuasiva com Benefícios Práticos -->
+        <div class="content-card-box">
+          <div class="content-box-title">
+            <span class="title-bar-accent"></span>
+            <span>Por Que Este Produto Vale a Pena? (Benefícios Comprovados)</span>
+          </div>
+          <div id="benefitsList" class="benefits-bullets-list">
+            <!-- 3 tópicos injetados via JS -->
+          </div>
+        </div>
+
+        <!-- Tabela de Especificações Técnicas -->
+        <div class="content-card-box">
+          <div class="content-box-title">
+            <span class="title-bar-accent"></span>
+            <span>Especificações Técnicas Detalhadas</span>
+          </div>
+          <table class="specs-table">
+            <tbody id="specsTable">
+              <!-- Chave-valor injetados via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Avaliações de Compradores Reais -->
+        <div class="content-card-box">
+          <div class="content-box-title">
+            <span class="title-bar-accent"></span>
+            <span>Avaliações de Quem Já Comprou</span>
+          </div>
+
+          <div class="reviews-summary-row">
+            <div class="reviews-score-big">
+              <span class="score-num">4.9</span>
+              <div class="score-stars">★★★★★</div>
+              <span class="score-total-txt">99% recomendam</span>
+            </div>
+
+            <div class="reviews-filter-pills">
+              <button class="review-filter-pill active">Todas as Avaliações (2.418)</button>
+              <button class="review-filter-pill">5 Estrelas (2.350)</button>
+              <button class="review-filter-pill">4 Estrelas (68)</button>
+              <button class="review-filter-pill">Com Fotos e Vídeos (1.140)</button>
+            </div>
+          </div>
+
+          <div class="reviews-cards-list">
+            <div class="review-customer-card">
+              <div class="review-card-header">
+                <div class="reviewer-profile">
+                  <div class="reviewer-avatar">MR</div>
+                  <div>
+                    <div class="reviewer-name">Mariana Rocha <span style="color: #059669; font-size: 0.75rem;">✓ Compra Verificada</span></div>
+                    <div class="review-date">Avaliado há 2 dias • Comprou via TrendShop</div>
+                  </div>
+                </div>
+                <div class="review-stars-row">★★★★★</div>
+              </div>
+              <p class="review-comment-text">"Chegou super rápido, bem embalado e exatamente igual ao que foi anunciado! Já estou usando todos os dias e facilitou demais a minha rotina. Qualidade surpreendente pelo preço pago."</p>
+            </div>
+
+            <div class="review-customer-card">
+              <div class="review-card-header">
+                <div class="reviewer-profile">
+                  <div class="reviewer-avatar" style="background: linear-gradient(135deg, #00e5ff, #0077b6);">FA</div>
+                  <div>
+                    <div class="reviewer-name">Felipe Almeida <span style="color: #059669; font-size: 0.75rem;">✓ Compra Verificada</span></div>
+                    <div class="review-date">Avaliado há 4 dias • Comprou via TrendShop</div>
+                  </div>
+                </div>
+                <div class="review-stars-row">★★★★★</div>
+              </div>
+              <p class="review-comment-text">"Vi a indicação no vídeo e decidi testar. O acabamento é de primeira, muito resistente e super prático. Pode comprar sem medo, com certeza comprarei novamente nessa loja."</p>
+            </div>
+
+            <div class="review-customer-card">
+              <div class="review-card-header">
+                <div class="reviewer-profile">
+                  <div class="reviewer-avatar" style="background: linear-gradient(135deg, #ff2a85, #b5179e);">CS</div>
+                  <div>
+                    <div class="reviewer-name">Camila Silva <span style="color: #059669; font-size: 0.75rem;">✓ Compra Verificada</span></div>
+                    <div class="review-date">Avaliado há 1 semana • Comprou via TrendShop</div>
+                  </div>
+                </div>
+                <div class="review-stars-row">★★★★★</div>
+              </div>
+              <p class="review-comment-text">"Melhor compra que fiz este mês na Shopee! O desconto estava ótimo e o link abriu certinho na promoção. Recomendo muito!"</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Você Também Pode Gostar (Carrossel / Grid do mesmo depto) -->
+        <div class="content-card-box related-products-box">
+          <div class="content-box-title">
+            <span class="title-bar-accent"></span>
+            <span>Quem Viu Este Item Também Comprou</span>
+          </div>
+          <div id="relatedProductsGrid" class="products-grid">
+            <!-- 4 produtos relacionados via JS -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Rodapé Global -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-bio">
+          <a href="index.html" class="brand-link" style="margin-bottom: 12px;">
+            <div class="logo-circle">
+              <img src="assets/img/logo.svg" alt="TrendShop Logo" width="34" height="34">
+            </div>
+            <div class="brand-info">
+              <div class="brand-title">Trend<span class="accent-cyan">Shop</span></div>
+              <span class="brand-slogan">Curadoria Inteligente das Melhores Ofertas</span>
+            </div>
+          </a>
+          <p>O TrendShop é uma plataforma independente de curadoria de ofertas com os maiores achados verificados da Shopee Brasil.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Departamentos</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html?depto=Casa%20%26%20Limpeza">Casa Inteligente & Limpeza</a></li>
+            <li><a href="index.html?depto=Cozinha">Cozinha Prática & Eletros</a></li>
+            <li><a href="index.html?depto=Tech%20%26%20Gadgets">Tech, Celular & Gadgets</a></li>
+            <li><a href="index.html?depto=Beleza%20%26%20Skincare">Beleza & Cuidados Pessoais</a></li>
+            <li><a href="index.html?depto=Moda%20%26%20Fitness">Moda & Fitness</a></li>
+            <li><a href="index.html?depto=Automotivo">Automotivo & Utilidades</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Garantia & Confiança</h4>
+          <ul class="footer-nav-list">
+            <li>🔒 Compra 100% Protegida Shopee</li>
+            <li>📦 Envio Nacional Rápido</li>
+            <li>🛡️ 90 Dias de Garantia Oficial</li>
+            <li>⭐ 99% de Satisfação dos Clientes</li>
+            <li><a href="admin.html" style="color: var(--neon-cyan);">Painel Administrativo</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-copy">
+        <div>© 2026 TrendShop Curadoria Oficial. Todos os direitos reservados. Links de afiliado comissionados pela Shopee Brasil.</div>
+        <div>Portal Oficial TrendShop 2026.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script da Página Interna -->
+  <script src="assets/js/produto.js"></script>
+</body>
+</html>
