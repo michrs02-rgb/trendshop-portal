@@ -2,6 +2,8 @@
  * TrendShop - JavaScript Principal da Vitrine (index.html)
  */
 
+const FALLBACK_IMAGE = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' width='400' height='400'%3E%3Cdefs%3E%3ClinearGradient id='bgGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231a0b2e'/%3E%3Cstop offset='100%25' stop-color='%23261245'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23bgGrad)'/%3E%3Ccircle cx='200' cy='170' r='50' fill='%237928CA' fill-opacity='0.25'/%3E%3Cpath d='M182 160h36v32h-36z M191 160a9 9 0 0 1 18 0' fill='none' stroke='%2300E5FF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ctext x='200' y='245' text-anchor='middle' font-family='sans-serif' font-size='15' font-weight='700' fill='%23FFFFFF'%3ETrend%3Ctspan fill='%2300E5FF'%3EShop%3C/tspan%3E%3C/text%3E%3Ctext x='200' y='270' text-anchor='middle' font-family='sans-serif' font-size='12' font-weight='500' fill='%23bba8d8'%3EImagem em Atualização%3C/text%3E%3C/svg%3E";
+
 document.addEventListener('DOMContentLoaded', () => {
   let todosProdutos = [];
   let deptoAtivo = 'Todos';
@@ -176,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="produto.html?id=${prod.numero}" class="product-card ${isVip ? 'is-featured-vip' : ''}" id="card-${prod.numero}">
           ${isVip ? `<div class="card-vip-tag">⭐ Achadinho VIP</div>` : ''}
           <div class="card-image-wrap">
-            <img src="${imgPrincipal}" alt="${prod.titulo}" loading="lazy" onerror="this.src='assets/img/${prod.numero}-1.jpg'">
+            <img src="${imgPrincipal}" alt="${prod.titulo}" onerror="this.onerror=null; this.src='${FALLBACK_IMAGE}';">
             <div class="card-discount-badge">-${prod.desconto_percentual}%</div>
           </div>
           <div class="card-body">
