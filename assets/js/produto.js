@@ -5,6 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   let produtoId = urlParams.get('id') || '01';
+  const trafficSrc = (urlParams.get('src') || 'direto').toLowerCase().trim();
 
   let todosProdutos = [];
   let produtoAtual = null;
@@ -77,12 +78,33 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('promoPrice').innerHTML = `<small>R$</small> ${precoFmt}`;
     document.getElementById('discountBadge').textContent = `-${p.desconto_percentual}% OFF`;
 
-    // Botão de compra afiliado com o link real do DOCX
+    // Botão de compra afiliado com o link real do DOCX e rastreio de origem
     const btnShopee = document.getElementById('btnShopeeBuy');
     if (btnShopee) {
       btnShopee.href = p.link_afiliado;
       btnShopee.target = '_blank';
       btnShopee.rel = 'noopener noreferrer';
+
+      // Rastreio de clique com parâmetro ?src=
+      btnShopee.onclick = () => {
+        try {
+          const registro = {
+            data: new Date().toISOString(),
+            produtoId: p.numero || String(p.id),
+            titulo: p.titulo,
+            origem: trafficSrc,
+            linkAfiliado: p.link_afiliado,
+            urlCompleta: window.location.href
+          };
+          const historico = JSON.parse(localStorage.getItem('trendshop_rastreio_cliques') || '[]');
+          historico.unshift(registro);
+          if (historico.length > 500) historico.pop();
+          localStorage.setItem('trendshop_rastreio_cliques', JSON.stringify(historico));
+          console.log('[TrendShop Rastreio] Clique registrado no botão Shopee:', registro);
+        } catch (e) {
+          console.warn('[TrendShop Rastreio] Erro ao registrar clique:', e);
+        }
+      };
     }
 
     // Tabela de Especificações Técnicas
@@ -252,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const precoOrigFmt = prod.preco_original.toFixed(2).replace('.', ',');
 
       return `
-        <a href="produto.html?id=${prod.numero}" class="product-card">
+        <a href="produto.html?id=${prod.numero}${trafficSrc && trafficSrc !== 'direto' ? `&src=${encodeURIComponent(trafficSrc)}` : ''}" class="product-card">
           <div class="card-image-wrap">
             <img src="${imgPrincipal}" alt="${prod.titulo}" loading="lazy" onerror="this.src='assets/img/${prod.numero}-1.jpg'">
             <div class="card-discount-badge">-${prod.desconto_percentual}%</div>

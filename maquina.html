@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrendShop | Máquina de Vendas 24h</title>
+  <meta name="description" content="Painel Operacional da Máquina de Vendas 24h TrendShop. Geração autoral de kits para Facebook, Reels, Shorts e TikTok.">
+  <link rel="icon" type="image/jpeg" href="assets/img/logo.jpg">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 (Sem emojis nativos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN com tema customizado Neon Dark -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#14092A',
+              card: '#1B0E38',
+              cardHover: '#24134B',
+              surface: '#0E0520',
+              cyan: '#00E5FF',
+              pink: '#FF2A85',
+              purple: '#8B5CF6',
+              green: '#10B981',
+              muted: '#94A3B8'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['ui-monospace', 'monospace']
+          },
+          boxShadow: {
+            'neon-cyan': '0 0 20px rgba(0, 229, 255, 0.35)',
+            'neon-pink': '0 0 20px rgba(255, 42, 133, 0.35)',
+            'neon-card': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #14092A;
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Scrollbars elegantes */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0E0520;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2D1A56;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00E5FF;
+    }
+    .neon-border-cyan {
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+    }
+    .neon-border-pink {
+      border: 1px solid rgba(255, 42, 133, 0.35);
+      box-shadow: 0 0 15px rgba(255, 42, 133, 0.15);
+    }
+    .tab-active {
+      border-bottom: 2px solid #00E5FF;
+      color: #00E5FF;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-brand-bg text-slate-100 flex flex-col min-h-screen">
+
+  <!-- BARRA SUPERIOR DE STATUS -->
+  <header class="border-b border-white/10 bg-brand-surface/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-full overflow-hidden border border-brand-cyan/60 group-hover:shadow-neon-cyan transition duration-300">
+            <img src="assets/img/logo.jpg" alt="TrendShop" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <div class="font-extrabold text-lg tracking-wide text-white flex items-center gap-1">
+              Trend<span class="text-brand-cyan">Shop</span>
+              <span class="text-xs px-2 py-0.5 ml-2 rounded-full font-bold uppercase tracking-wider bg-brand-pink/20 text-brand-pink border border-brand-pink/40">
+                <i class="fa-solid fa-bolt mr-1"></i>Máquina 24h
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400">Passo 1: Motor Operacional de Tráfego e Conteúdo</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Links de navegação rápida -->
+      <div class="flex items-center space-x-3 text-sm">
+        <a href="index.html" class="px-3 py-1.5 rounded-lg border border-white/10 hover:border-brand-cyan/50 text-slate-300 hover:text-brand-cyan transition flex items-center gap-2">
+          <i class="fa-solid fa-store text-xs"></i>
+          <span>Loja Vitrine</span>
+        </a>
+        <a href="admin.html" class="px-3 py-1.5 rounded-lg border border-white/10 hover:border-brand-pink/50 text-slate-300 hover:text-brand-pink transition flex items-center gap-2">
+          <i class="fa-solid fa-gauge text-xs"></i>
+          <span>Admin Curador</span>
+        </a>
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>60 Produtos Ativos</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL: SELETOR + PAINEL DE CONTROLE -->
+  <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- COLUNA ESQUERDA: LISTA E FILTRO DE PRODUTOS (5 COLUNAS NO DESKTOP) -->
+    <section class="lg:col-span-5 flex flex-col space-y-4">
+      
+      <!-- Caixa de Busca e Filtros -->
+      <div class="bg-brand-card p-4 rounded-2xl border border-white/10 shadow-neon-card">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+            <i class="fa-solid fa-magnifying-glass text-brand-cyan"></i>
+            <span>Catálogo de Produtos</span>
+          </h2>
+          <span id="produtosContadorBadge" class="text-xs px-2 py-0.5 rounded-md bg-white/5 text-slate-400 font-mono">
+            60 itens
+          </span>
+        </div>
+
+        <!-- Input de busca -->
+        <div class="relative mb-3">
+          <i class="fa-solid fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input
+            type="text"
+            id="maquinaBusca"
+            placeholder="Buscar por ID, nome ou benefício..."
+            class="w-full bg-brand-surface pl-10 pr-4 py-2.5 rounded-xl text-sm border border-white/10 focus:border-brand-cyan focus:outline-none focus:ring-1 focus:ring-brand-cyan text-white placeholder-slate-500 transition"
+          >
+        </div>
+
+        <!-- Filtro por Departamento -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1" id="departamentoFiltros">
+          <button data-depto="todos" class="btn-depto-filtro px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap bg-brand-cyan text-brand-bg transition">
+            Todos
+          </button>
+          <button data-depto="Casa & Limpeza" class="btn-depto-filtro px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap bg-white/5 hover:bg-white/10 text-slate-300 transition">
+            Casa & Limpeza
+          </button>
+          <button data-depto="Cozinha" class="btn-depto-filtro px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap bg-white/5 hover:bg-white/10 text-slate-300 transition">
+            Cozinha
+          </button>
+          <button data-depto="Beleza & Skincare" class="btn-depto-filtro px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap bg-white/5 hover:bg-white/10 text-slate-300 transition">
+            Beleza
+          </button>
+          <button data-depto="Tech & Gadgets" class="btn-depto-filtro px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap bg-white/5 hover:bg-white/10 text-slate-300 transition">
+            Tech
+          </button>
+          <button data-depto="Automotivo" class="btn-depto-filtro px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap bg-white/5 hover:bg-white/10 text-slate-300 transition">
+            Auto
+          </button>
+          <button data-depto="Moda & Fitness" class="btn-depto-filtro px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap bg-white/5 hover:bg-white/10 text-slate-300 transition">
+            Moda & Fitness
+          </button>
+        </div>
+      </div>
+
+      <!-- Lista Rolável com os Produtos -->
+      <div
+        id="produtosListaContainer"
+        class="bg-brand-card/70 p-3 rounded-2xl border border-white/10 flex-1 overflow-y-auto space-y-2 max-h-[720px]"
+      >
+        <!-- Cards de produtos injetados via JS -->
+      </div>
+    </section>
+
+    <!-- COLUNA DIREITA: PAINEL DA MÁQUINA DE VENDAS 24H (7 COLUNAS NO DESKTOP) -->
+    <section class="lg:col-span-7 flex flex-col space-y-5">
+
+      <!-- CARD RESUMO DO PRODUTO ATIVO + APRESENTADOR INTELIGENTE -->
+      <div id="cardProdutoAtivo" class="bg-brand-card p-5 rounded-2xl border border-white/10 shadow-neon-card">
+        <!-- Injetado dinamicamente via maquina.js -->
+        <div class="animate-pulse space-y-4">
+          <div class="h-6 bg-white/10 rounded w-1/3"></div>
+          <div class="h-20 bg-white/5 rounded"></div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO A: LINKS RASTREADOS COM PARÂMETRO ?src= -->
+      <div class="bg-brand-card p-5 rounded-2xl border border-white/10 shadow-neon-card">
+        <div class="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan">
+              <i class="fa-solid fa-link text-sm"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white text-base">Links Rastreados por Rede</h3>
+              <p class="text-xs text-slate-400">Captura automática da origem no clique de compra Shopee</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-brand-cyan bg-brand-cyan/10 px-2 py-1 rounded border border-brand-cyan/20">
+            ?src=origem
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="linksRastreadosGrid">
+          <!-- Injetado via JS com Facebook, Instagram, YouTube, TikTok -->
+        </div>
+      </div>
+
+      <!-- SEÇÃO B & C: ABAS DE KITS OPERACIONAIS (FACEBOOK CARROSSEL / VÍDEO 40S / CHECKLIST) -->
+      <div class="bg-brand-card rounded-2xl border border-white/10 shadow-neon-card overflow-hidden">
+        
+        <!-- Cabeçalho das Abas -->
+        <div class="flex border-b border-white/10 bg-brand-surface/60 px-4 pt-2 gap-2 text-sm overflow-x-auto">
+          <button id="tabBtnFacebook" class="tab-btn px-4 py-3 flex items-center gap-2 tab-active transition whitespace-nowrap">
+            <i class="fa-brands fa-facebook text-blue-400"></i>
+            <span>Kit Facebook (Carrossel 3 Slides)</span>
+          </button>
+          <button id="tabBtnVideo" class="tab-btn px-4 py-3 flex items-center gap-2 text-slate-400 hover:text-white transition whitespace-nowrap">
+            <i class="fa-solid fa-video text-brand-pink"></i>
+            <span>Kit Vídeo Curto 40s (Reels/Shorts/TikTok)</span>
+          </button>
+          <button id="tabBtnChecklist" class="tab-btn px-4 py-3 flex items-center gap-2 text-slate-400 hover:text-white transition whitespace-nowrap">
+            <i class="fa-solid fa-list-check text-emerald-400"></i>
+            <span>Checklist & Mídia</span>
+          </button>
+        </div>
+
+        <!-- CONTEÚDO DA ABA 1: KIT FACEBOOK -->
+        <div id="tabContentFacebook" class="p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <p class="text-xs text-slate-400">
+              Formato Carrossel 1080x1350 (4:5) estruturado para alta conversão no feed.
+            </p>
+            <button id="btnCopiarTudoFacebook" class="px-3 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 text-xs font-semibold transition flex items-center gap-1.5">
+              <i class="fa-solid fa-copy"></i>
+              <span>Copiar Kit Completo</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <!-- Slide 1 -->
+            <div class="bg-brand-surface p-3.5 rounded-xl border border-white/5 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-brand-cyan uppercase tracking-wider">Slide 1: Capa / Gancho</span>
+                <button class="btn-copiar text-slate-400 hover:text-brand-cyan text-xs transition" data-target="fbSlide1Text" title="Copiar Slide 1">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+              </div>
+              <div id="fbSlide1Text" class="text-xs text-slate-200 bg-black/20 p-2.5 rounded-lg font-mono whitespace-pre-wrap leading-relaxed min-h-[90px]"></div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="bg-brand-surface p-3.5 rounded-xl border border-white/5 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-brand-pink uppercase tracking-wider">Slide 2: Benefícios</span>
+                <button class="btn-copiar text-slate-400 hover:text-brand-pink text-xs transition" data-target="fbSlide2Text" title="Copiar Slide 2">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+              </div>
+              <div id="fbSlide2Text" class="text-xs text-slate-200 bg-black/20 p-2.5 rounded-lg font-mono whitespace-pre-wrap leading-relaxed min-h-[90px]"></div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="bg-brand-surface p-3.5 rounded-xl border border-white/5 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Slide 3: Oferta / Preço</span>
+                <button class="btn-copiar text-slate-400 hover:text-emerald-400 text-xs transition" data-target="fbSlide3Text" title="Copiar Slide 3">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+              </div>
+              <div id="fbSlide3Text" class="text-xs text-slate-200 bg-black/20 p-2.5 rounded-lg font-mono whitespace-pre-wrap leading-relaxed min-h-[90px]"></div>
+            </div>
+          </div>
+
+          <!-- Legenda com Link Rastreado -->
+          <div class="bg-brand-surface p-4 rounded-xl border border-white/5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-brands fa-facebook text-blue-400"></i>
+                <span>Texto da Legenda com Link Rastreado</span>
+              </span>
+              <button class="btn-copiar px-3 py-1 rounded bg-brand-cyan/20 hover:bg-brand-cyan/30 text-brand-cyan text-xs font-semibold transition flex items-center gap-1" data-target="fbLegendaText">
+                <i class="fa-solid fa-copy"></i>
+                <span>Copiar Legenda</span>
+              </button>
+            </div>
+            <div id="fbLegendaText" class="text-xs text-slate-200 bg-black/30 p-3 rounded-lg font-mono whitespace-pre-wrap leading-relaxed"></div>
+          </div>
+        </div>
+
+        <!-- CONTEÚDO DA ABA 2: KIT VÍDEO CURTO 40S -->
+        <div id="tabContentVideo" class="p-5 space-y-5 hidden">
+          
+          <!-- Roteiro Cronometrado em 4 Blocos -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-stopwatch text-brand-pink"></i>
+                <span>Roteiro Cronometrado (40 segundos)</span>
+              </h4>
+              <button class="btn-copiar px-3 py-1 rounded bg-brand-pink/20 hover:bg-brand-pink/30 text-brand-pink text-xs font-semibold transition flex items-center gap-1" data-target="roteiroCompletoText">
+                <i class="fa-solid fa-copy"></i>
+                <span>Copiar Roteiro Completo</span>
+              </button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs" id="blocosRoteiroGrid">
+              <!-- Injetado via JS -->
+            </div>
+            <div id="roteiroCompletoText" class="hidden"></div>
+          </div>
+
+          <!-- 5 Prompts de Cena em Português para Google Flow -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <div>
+                <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-wand-magic-sparkles text-brand-cyan"></i>
+                  <span>5 Prompts de Cena para Google Flow (9:16)</span>
+                </h4>
+                <p class="text-xs text-slate-400">Plano médio, luz natural, sem texto na tela, elemento anexado</p>
+              </div>
+              <button class="btn-copiar px-3 py-1 rounded bg-brand-cyan/20 hover:bg-brand-cyan/30 text-brand-cyan text-xs font-semibold transition flex items-center gap-1" data-target="promptsGoogleFlowText">
+                <i class="fa-solid fa-copy"></i>
+                <span>Copiar Todos os Prompts</span>
+              </button>
+            </div>
+
+            <div class="space-y-2.5" id="promptsGoogleFlowContainer">
+              <!-- Injetado via JS -->
+            </div>
+            <div id="promptsGoogleFlowText" class="hidden"></div>
+          </div>
+
+          <!-- Metadados de Publicação: Título SEO, Legenda, Comentário Fixado -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <!-- Título SEO -->
+            <div class="bg-brand-surface p-3.5 rounded-xl border border-white/5 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-300">Título SEO Shorts (&le; 60 car.)</span>
+                <button class="btn-copiar text-slate-400 hover:text-brand-cyan text-xs" data-target="videoTituloSeo">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+              </div>
+              <div id="videoTituloSeo" class="text-xs text-slate-200 bg-black/20 p-2.5 rounded font-mono"></div>
+              <div class="text-[10px] text-slate-500 text-right" id="videoTituloSeoLen">0 / 60</div>
+            </div>
+
+            <!-- Legenda com Aviso Obrigatório -->
+            <div class="bg-brand-surface p-3.5 rounded-xl border border-white/5 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-300">Legenda (&le; 300 car.)</span>
+                <button class="btn-copiar text-slate-400 hover:text-brand-pink text-xs" data-target="videoLegenda">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+              </div>
+              <div id="videoLegenda" class="text-xs text-slate-200 bg-black/20 p-2.5 rounded font-mono leading-relaxed whitespace-pre-wrap"></div>
+              <div class="text-[10px] text-slate-500 text-right" id="videoLegendaLen">0 / 300</div>
+            </div>
+
+            <!-- Comentário Fixado -->
+            <div class="bg-brand-surface p-3.5 rounded-xl border border-white/5 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-emerald-400">Comentário Fixado</span>
+                <button class="btn-copiar text-slate-400 hover:text-emerald-400 text-xs" data-target="videoComentarioFixado">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+              </div>
+              <div id="videoComentarioFixado" class="text-xs text-slate-200 bg-black/20 p-2.5 rounded font-mono leading-relaxed whitespace-pre-wrap"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTEÚDO DA ABA 3: CHECKLIST DE PUBLICAÇÃO & GERADOR PYTHON -->
+        <div id="tabContentChecklist" class="p-5 space-y-5 hidden">
+          
+          <!-- Chamada do Gerador Python Local -->
+          <div class="bg-brand-surface p-4 rounded-xl border border-brand-cyan/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2 py-0.5 rounded text-xs font-bold uppercase bg-brand-cyan/20 text-brand-cyan">Gerador Python Autoral</span>
+                <span class="text-xs text-slate-400">Pillow + MoviePy</span>
+              </div>
+              <p class="text-xs text-slate-300">Execute no terminal para gerar as 3 imagens do Carrossel e o Vídeo 9:16 vertical:</p>
+              <code id="comandoPythonGerar" class="inline-block mt-2 font-mono text-xs text-brand-cyan bg-black/50 px-3 py-1.5 rounded-lg border border-white/10 select-all">
+                python gerar_midias.py 13
+              </code>
+            </div>
+            <button id="btnCopiarComandoPython" class="px-4 py-2 rounded-xl bg-brand-cyan text-brand-bg font-bold text-xs hover:bg-brand-cyan/90 transition flex items-center gap-2 whitespace-nowrap shadow-neon-cyan">
+              <i class="fa-solid fa-terminal"></i>
+              <span>Copiar Comando</span>
+            </button>
+          </div>
+
+          <!-- Checklist por Rede Social -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-list-check text-emerald-400"></i>
+                <span>Checklist de Produção e Postagem</span>
+              </h4>
+              <span id="checklistProgressoText" class="text-xs font-mono text-emerald-400">0% concluído</span>
+            </div>
+
+            <!-- Barra de progresso -->
+            <div class="w-full bg-black/40 h-2 rounded-full overflow-hidden mb-4 border border-white/5">
+              <div id="checklistProgressBar" class="bg-gradient-to-r from-brand-cyan to-brand-pink h-full w-0 transition-all duration-300"></div>
+            </div>
+
+            <!-- Grade com as 4 redes -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="checklistRedesGrid">
+              <!-- Injetado dinamicamente com checkboxes salvos no localStorage -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- NOTIFICAÇÃO TOAST DE CÓPIA -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-surface border border-brand-cyan text-white text-xs font-semibold shadow-neon-cyan">
+    <i class="fa-solid fa-circle-check text-brand-cyan"></i>
+    <span id="toastMessage">Texto copiado com sucesso!</span>
+  </div>
+
+  <!-- SCRIPT PRINCIPAL DA MÁQUINA -->
+  <script src="assets/js/maquina.js"></script>
+</body>
+</html>
